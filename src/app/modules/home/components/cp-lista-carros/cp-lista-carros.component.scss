@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Century+Gothic&display=swap');
+
+.container {
+  width: 660px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  background: #b5b0cb;
+  box-shadow: 2px 0px 1.5px 0px #bebbbb;
+  border-radius: 3px;
+  padding: 1em;
+  border-top: 25px;
+  margin-top: 50px;
+  font-family: "Century Gothic";
+  color: white;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  font-family: "Century Gothic";
+}
+
+.botao {
+  background-color: #7f73b7;
+  color: #fff;
+  font-family: inherit;
+  border-radius: 2px;
+  margin: 20px auto;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  font-family: "Century Gothic";
+  margin-right: 3px;
+  width: 50px;
+}
+
+.input {
+  flex: 1;
+  padding: 5px;
+  border: 1px solid #ddd;
+  margin-right: 8px;
+  text-align: center;
+  border: 1px solid #b5b0cb;
+  background: #b5b0cb;
+  width: 100px;
+  height: 15px;
+  font-family: "Century Gothic";
+  color: white;
+}

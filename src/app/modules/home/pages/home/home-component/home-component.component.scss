@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Century+Gothic&display=swap');
+
+.container {
+    width: 700px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    background: #bfe9b9;
+    box-shadow: 2px 0px 1.5px 0px #bebbbb;
+    border-radius: 3px;
+    padding: 1em;
+    border-top: 25px;
+    margin-top: 50px;
+    font-family: 'Century Gothic', sans-serif;
+  }
+
+  h1{
+    font-family: 'Century Gothic', sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px #f0eded solid;
+    color: #f8f8f8;
+    //text-shadow: 0.1em 0.1em #bdc0b9;
+    font-size: 35px;
+  }
