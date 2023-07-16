@@ -1,5 +1,5 @@
-import { Veiculo } from '../models/veiculo';
 import { EventEmitter, Injectable } from '@angular/core';
+import { Veiculo } from '../model/veiculo';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +22,7 @@ export class ServiceService {
   public getVeiculoLista(event: number){
     this.veiculo = this.listaVeiculos[event]
     this.emitEventEditar.emit(this.veiculo);
+  
   }
 
   public submitVeiculo(marca: string, placa: string, ano: string, tipo: string){
@@ -36,4 +37,5 @@ export class ServiceService {
   }
 
   constructor() { }
+
 }

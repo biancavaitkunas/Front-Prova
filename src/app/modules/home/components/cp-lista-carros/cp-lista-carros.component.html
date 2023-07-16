@@ -1,4 +1,4 @@
-<app-cp-inputs (emiteVeiculo)="setEmitVeiculo($event, $event, $event, $event)"></app-cp-inputs>
+<app-cp-inputs (emiteVeiculo)="setEmitVeiculo($event, $event, $event, $event)" ></app-cp-inputs>
 
 <section class="container">
     <table>
@@ -11,12 +11,15 @@
               <th>Ações</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody> 
             <tr *ngFor="let veiculo of listaVeiculos, let i = index">
               <td><input class="input" [(ngModel)]="veiculo.marca"></td>
               <td><input class="input" [(ngModel)]="veiculo.placa"></td>
               <td><input class="input" [(ngModel)]="veiculo.ano"></td>
-              <td><input class="input" [(ngModel)]="veiculo.tipo"></td>
+              <td><input class="input" [ngClass]="{
+                'popular': veiculo.tipo ==='Popular', 
+                'luxo': veiculo.tipo == 'Luxo', 
+                'carga': veiculo.tipo == 'Carga'}" [(ngModel)]="veiculo.tipo"></td>
               <td>
                 <button class="botao" (click)="editarVeiculo(i)">Editar</button>
                 <button class="botao" (click)="deleteVeiculo(i)">Deletar</button>

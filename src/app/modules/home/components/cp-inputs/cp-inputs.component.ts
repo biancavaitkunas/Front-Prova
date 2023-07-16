@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Veiculo } from '../../models/veiculo';
 import { ServiceService } from '../../services/service.service';
 
@@ -7,41 +7,32 @@ import { ServiceService } from '../../services/service.service';
   templateUrl: './cp-inputs.component.html',
   styleUrls: ['./cp-inputs.component.scss'],
 })
-export class CpInputsComponent {
+export class CpInputsComponent implements OnInit {
+
+  public veiculo: any = {}
 
   @Output() public emiteVeiculo = new EventEmitter();
 
-  public addVeiculo: Array<Veiculo> = [
-  ]
+  constructor(private service: ServiceService) { }
 
-  constructor(private service: ServiceService) {}
+  public submitVeiculo(marca: string, placa: string, ano: string, tipo: string) {
+    marca = marca.trim();
+    placa = placa.trim();
+    ano = ano.trim();
 
-  public addMarca = '';
-  public addPlaca = '';
-  public addAno = '';
-  public addTipo = '';
-  public fonte: string = '';
+    if(marca && placa && ano && tipo){
+      this.service.submitVeiculo(marca, placa, ano, tipo);
+      this.limpaVeiculo();
+    }   
 
-  public submitVeiculo() {
-    this.addMarca = this.addMarca.trim();
-    this.addPlaca = this.addPlaca.trim();
-    this.addAno = this.addAno.trim();
-    this.addTipo = this.addTipo.trim();
-
-    if (this.addMarca && this.addPlaca && this.addAno && this.addTipo) {
-      this.service.submitVeiculo(this.addMarca, this.addPlaca, this.addAno, this.addTipo);
-      this.addMarca = '';
-      this.addPlaca = '';
-      this.addAno = '';
-      this.addTipo = '';
-    }
   }
 
-  public recebeVeiculo(marca: string, placa: string, ano: string, tipo: string){
-    this.addMarca = marca;
-    this.addPlaca = placa;
-    this.addAno = ano;
-    this.addTipo = tipo;
+  public limpaVeiculo() {
+    this.veiculo = {};
   }
 
+  ngOnInit(): void {
+    this.service.emitEventEditar.subscribe((carro: Veiculo) => { this.veiculo = carro });
+
+  }
 }

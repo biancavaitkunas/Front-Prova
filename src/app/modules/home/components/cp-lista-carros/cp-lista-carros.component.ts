@@ -1,16 +1,22 @@
 import { bindNodeCallback } from 'rxjs';
 import { Veiculo } from '../../models/veiculo';
 import { ServiceService } from '../../services/service.service';
-import { Component, DoCheck, EventEmitter, Output } from '@angular/core';
+import { Component, DoCheck, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-cp-lista-carros',
   templateUrl: './cp-lista-carros.component.html',
   styleUrls: ['./cp-lista-carros.component.scss'],
 })
-export class CpListaCarrosComponent implements DoCheck {
+export class CpListaCarrosComponent implements OnInit {
 
   @Output() public emitEventEditar = new EventEmitter();
+
+  public veiculoSelecionado!: Veiculo;
+
+  public veiculo!: Veiculo;
+
+  public fonte: boolean = false;
 
   ngDoCheck(): void {
     this.setLocalStorage();
@@ -19,7 +25,6 @@ export class CpListaCarrosComponent implements DoCheck {
   public listaVeiculos: Array<Veiculo> = JSON.parse(
     localStorage.getItem('veiculos') || '[]'
   );
-  fonte: string = '';
 
   constructor(private service: ServiceService) {}
 
@@ -32,9 +37,8 @@ export class CpListaCarrosComponent implements DoCheck {
   }
 
   public editarVeiculo(event: number) {
-    const veiculo = this.service.getVeiculoLista(event);
-    this.emitEventEditar.emit(veiculo)
-
+    this.service.getVeiculoLista(event);
+    this.listaVeiculos.splice(event);
   }
 
   public setEmitVeiculo(

@@ -1,0 +1,25 @@
+<section class="container">
+    <table>
+        <thead>
+            <tr>
+              <th>Marca</th>
+              <th>Placa</th>
+              <th>Ano</th>
+              <th>Tipo</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let veiculo of listaVeiculos, let i = index">
+              <td><input class="input" [(ngModel)]="veiculo.marca">{{veiculo.marca}}</td>
+              <td><input class="input" [(ngModel)]="veiculo.placa">{{veiculo.placa}}</td>
+              <td><input class="input" [(ngModel)]="veiculo.ano">{{veiculo.ano}}</td>
+              <td><input class="input" [(ngModel)]="veiculo.tipo">{{veiculo.tipo}}</td>
+              <td>
+                <button class="botao">Editar</button>
+                <button class="botao" (click)="deleteVeiculo(i)">Deletar</button>
+              </td>
+            </tr>
+          </tbody>
+    </table>
+</section>
